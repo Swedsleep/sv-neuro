@@ -11,18 +11,8 @@ EXPLICATION (Correction des réponses) / FÖRKLARING (Korrigera svar) / EXPLANAT
 (Bloc purement informatif; ne modifie ni l’UI ni les fonctions.)
 ===============================================================
 -->
-
-
 <html lang="sv">
-
 <head>
-
-
-
-
-
-
-
 <meta charset="utf-8"/>
 <title>Questionnaire</title>
 <style>
@@ -34,8 +24,6 @@ EXPLICATION (Correction des réponses) / FÖRKLARING (Korrigera svar) / EXPLANAT
 </head>
 <body>
 <!-- VALIDITY (SAFE) -->
-
-
 <!-- ===== /PRELUDE ===== -->
 
 <!-- ========== /BANQUE DE QUESTIONS ========== -->
@@ -157,11 +145,7 @@ EXPLICATION (Correction des réponses) / FÖRKLARING (Korrigera svar) / EXPLANAT
       font-weight: 500;
       opacity: 1;
     }
-
 </style>
-
-
-
 <header>
 <h1 id="titleBar">
 <span id="mainTitle">Frågeformulär Neurologi</span>
@@ -258,35 +242,15 @@ Om du inte vill höra frågorna, tryck på RÖST-knappen.</p>
        ====================================================== -->
 
 <!-- === BEGIN: Unavailable label fix (handles (undefined)/language) === -->
-
 <!-- === END: Unavailable label fix === -->
-
 <!-- HEADER d'accueil : lit la CONFIG + i18n + contrôle langue dispo -->
 <!-- ========== CHARGEUR & NOTABLES ========== -->
-
 <!-- ========== /CHARGEUR & NOTABLES ========== -->
-
-
 <!-- HARD-STOP language guard: blocks immediately if chosen language is not Svenska -->
-
-
-
-
-
-
-
-
 <!-- === PATCH: Corriger (2 nivåer) — rensa sedan föregående fråga (forceIndex + robust idx) === -->
-
 <!-- OPTION A PATCH: Q34/35/36/38/39/40 => Verbal 1 + MIXTE (Texte → Échelle) -->
-
-
 <!-- === TTS FIX WRAPPER v2 (non-intrusif) === -->
-
 <!-- === /TTS FIX WRAPPER v2 === -->
-
-
-
 
 <style>
 #forcedIntroOverlay{
@@ -322,27 +286,6 @@ Om du inte vill höra frågorna, tryck på RÖST-knappen.</p>
 </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <section id="summary" style="display:none;">
   <h2 id="summaryTitle">Sammanfattning och korrigering</h2>
   <p><strong id="summaryCodeLabel">Formulärkod :</strong> <span id="resumeCode"></span></p>
@@ -355,13 +298,7 @@ Om du inte vill höra frågorna, tryck på RÖST-knappen.</p>
   <button id="closeBtn">Slutför</button>
 </section>
 
-
-
-
-
-
 </meta><style id="corrigerPatchCSS">#corrigerBtn{position:relative;z-index:99999;pointer-events:auto;}</style>
-
 
 <!-- Q3/Q4 robust scale patch (ES5-only, non-invasive) -->
 <style id="q34ForceCSS">
@@ -374,49 +311,19 @@ Om du inte vill höra frågorna, tryck på RÖST-knappen.</p>
   body.q34-force #answerInput { display: none !important; }
 </style>
 
-
 <!-- Q3/Q4 enhancement: clear values & suppress error beeps after a valid submit -->
-
-
 <!-- Q3/Q4: mute 'beep' when value 1–5 is valid -->
-
-
 <!-- Q3/Q4: Allow beep ONLY when value is NOT 1..5; prevent double-beeps -->
-
-
 <!-- Q3/Q4: STRICT beep control — suppress ONLY for valid 1..5 submissions -->
-
-
 <!-- Q3/Q4: HARD MUTE for valid 1–5 submissions (covers custom beep(), audio tags, and new Audio().play) -->
-
-
 <!-- Q3/Q4: first-visit warmup to avoid spurious beep; only once per question -->
-
-
 <!-- Q3/Q4: FINAL no-beep-on-valid — capture Enter/OK at top level, stop propagation, hard-mute during our own submit -->
-
-
 <!-- Q3/Q4: after invalid submit (e.g., 7 or letters), LET the beep happen then clear the field -->
-
-
 <!-- Q3/Q4 v10: ensure invalid entries are cleared even if other handlers stop propagation -->
-
-
-
 
 <!-- === DSM-style scale patch (ES5) for Q5,Q6,Q7 === -->
 
-
-
-
-
-
 <!-- Robust submit for NOTABLES (ES5): no beep on valid 1–5, advance; beep+clear on invalid -->
-
-
-
-
-
 
 <!-- Anti-flicker for notable questions (ES5): stable CSS class + double-RAF -->
 <style id="nbStableCSS">
@@ -427,25 +334,8 @@ Om du inte vill höra frågorna, tryck på RÖST-knappen.</p>
   body.nb-on #answerInput { display: none !important; }
 </style>
 
-
-
-
-
-
 <!-- Add many NOTABLE questions (ES5, 0-based indices) -->
-
-
-
-
-
-
 <!-- FINAL OVERRIDE: make Q12 the first notable and remove notable status from Q3–Q7 -->
-
-
-
-
-
-
 <!-- HARD DISABLE SCALE on Q3–Q7 regardless of earlier patches -->
 <style id="hardDisableQ3toQ7">
   /* Force text mode for Q3..Q7 (indices 2..6), even if 'nb-on' is present */
@@ -477,59 +367,16 @@ Om du inte vill höra frågorna, tryck på RÖST-knappen.</p>
   }
 </style>
 
-
-
-
-
-
 <!-- Clear scale value when moving between consecutive notable questions (ES5) -->
-
-
-
-
-
-
 <!-- Strengthen submit on notables: ensure '1'..'5' advance (no skip logic at all) -->
-
-
-
-
-
-
 <!-- SKIP-ON-1 for selected NOTABLES: jump to NEXT SECTION (not just next question) -->
-
-
-
-
-
-
 <!-- FINAL OVERRIDE: SKIP-on-1 with explicit targets (ES5) -->
-
-
-
-
-
-
 <!-- ULTRA-ROBUST SKIP-on-1 to NEXT SECTION for Q12 and Q21 (ES5) -->
-
-
-
-
 <!-- === BOB ULTRA-SILENCE PATCH (2025-10-14) — only beep on invalid 1–5; kill clicks on home/Q1–Q11 === -->
-
-
 <!-- === BOB TTS RESTORE (2025-10-14) — allow TTS on home & during question narration without reintroducing clicks === -->
-
-
 <!-- === BOB TTS TEST BUTTON HOOK (2025-10-14) — force test voice to speak === -->
-
-
 <!-- === BOB TTS SYNC PATCH (2025-10-14) — de-duplicate utterances & align with displayed question === -->
-
-
 <!-- === BOB TTS DEBOUNCE+LOCK (2025-10-14) — speak once per question, no repeated starts === -->
-
-
 <!-- === BOB NO-MEDIA-ON-NON-SCALE (2025-10-14) — kill beep/click at Q3 again === -->
 
 <script defer>
@@ -628,14 +475,8 @@ const SCALE_LABELS = {
 
 var verbal1 = [19, 30, 45, 47, 52, 26];
 ;
-
-
 ;
-
-
 ;
-
-
 ;
 
 // === AUTO-INJECTED (Neurologi – 18 sektioner) ===
@@ -2639,8 +2480,7 @@ document.getElementById('finalScreen').addEventListener('click', () => {
         var idx = list[i];
         if (questions[idx]) questions[idx].type = "scale";
       }
-    }
-  
+    } 
 ;
 
 (function(){
@@ -3183,7 +3023,6 @@ function lireTexte(txt){
     synth.cancel(); synth.speak(u);
   }catch(_){}
 }
-
 ;
 
 (function(){
